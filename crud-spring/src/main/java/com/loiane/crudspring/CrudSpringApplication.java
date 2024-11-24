@@ -25,11 +25,18 @@ public class CrudSpringApplication {
 			c.setName("Angular String");
 			c.setCategory(Category.FRONT_END);
 
-			Lesson l = new Lesson();
-			l.setName("Introduçao");
-			l.setYoutubeUrl("watch?v=3");
-			l.setCourse(c);
-			c.getLessons().add(l);
+			Lesson l1 = new Lesson();
+			l1.setName("Introduçao");
+			l1.setYoutubeUrl("watch?v=1");
+			l1.setCourse(c);
+
+			Lesson l2 = new Lesson();
+			l2.setName("Angular");
+			l2.setYoutubeUrl("watch?v=2");
+			l2.setCourse(c);
+
+			c.getLessons().add(l1);
+			c.getLessons().add(l2);
 
 			courseRepository.save(c);
 		};
