@@ -1,10 +1,9 @@
 package com.loiane.crudspring.dto.mapper;
 
-import org.springframework.stereotype.Component;
-
 import com.loiane.crudspring.dto.CourseDTO;
 import com.loiane.crudspring.enums.Category;
 import com.loiane.crudspring.model.Course;
+import org.springframework.stereotype.Component;
 
 @Component
 public class CourseMapper {

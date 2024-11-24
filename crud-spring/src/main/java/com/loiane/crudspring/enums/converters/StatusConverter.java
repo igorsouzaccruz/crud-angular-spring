@@ -1,10 +1,10 @@
 package com.loiane.crudspring.enums.converters;
 
-import java.util.stream.Stream;
-
 import com.loiane.crudspring.enums.Status;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
+
+import java.util.stream.Stream;
 
 
 @Converter(autoApply = true)

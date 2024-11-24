@@ -1,18 +1,17 @@
 package com.loiane.crudspring.service;
 
-import java.util.List;
-
-import org.springframework.stereotype.Service;
-import org.springframework.validation.annotation.Validated;
-import java.util.stream.Collectors;
 import com.loiane.crudspring.dto.CourseDTO;
 import com.loiane.crudspring.dto.mapper.CourseMapper;
 import com.loiane.crudspring.exception.RecordNotFoundException;
 import com.loiane.crudspring.repository.CourseRepository;
-
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Validated
 @Service
