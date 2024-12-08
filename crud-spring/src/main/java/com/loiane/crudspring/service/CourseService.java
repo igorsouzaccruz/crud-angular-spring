@@ -3,6 +3,7 @@ package com.loiane.crudspring.service;
 import com.loiane.crudspring.dto.CourseDTO;
 import com.loiane.crudspring.dto.mapper.CourseMapper;
 import com.loiane.crudspring.exception.RecordNotFoundException;
+import com.loiane.crudspring.model.Course;
 import com.loiane.crudspring.repository.CourseRepository;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -41,11 +42,14 @@ public class CourseService {
         return courseMapper.toDTO(courseRepository.save(courseMapper.toEntity(course)));
     }
 
-    public CourseDTO update(@NotNull @Positive Long id, @Valid CourseDTO course) {
+    public CourseDTO update(@NotNull @Positive Long id, @Valid CourseDTO courseDTO) {
         return courseRepository.findById(id)
                 .map(recordFound -> {
-                    recordFound.setName(course.name());
-                    recordFound.setCategory(courseMapper.convertCategoryValue(course.category()));
+                    Course course = courseMapper.toEntity(courseDTO);
+                    recordFound.setName(courseDTO.name());
+                    recordFound.setCategory(courseMapper.convertCategoryValue(courseDTO.category()));
+                    recordFound.getLessons().clear();
+                    course.getLessons().forEach(recordFound.getLessons()::add);
                     return courseMapper.toDTO(courseRepository.save(recordFound));
                 }).orElseThrow(() -> new RecordNotFoundException(id));
     }
